@@ -33,11 +33,11 @@ public class MainMenuButtons : MonoBehaviour
 
     public void MusicVolumeSlider(System.Single newVolume)
     {
-        Settings.Instance.musicVolume = newVolume;
+        Settings.Instance.MusicVolume = newVolume;
     }
 
     public void SFXVolumeSlider(System.Single newVolume)
     {
-        Settings.Instance.sfxVolume = newVolume;
+        Settings.Instance.SFXVolume = newVolume;
     }
 }

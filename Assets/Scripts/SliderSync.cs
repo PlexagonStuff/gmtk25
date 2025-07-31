@@ -17,8 +17,8 @@ public class SliderSync : MonoBehaviour
     {
         GetComponent<Slider>().value = valueToSyncTo switch
         {
-            settingsOptions.MusicVolume => Settings.Instance.musicVolume,
-            settingsOptions.SFXVolume => Settings.Instance.sfxVolume,
+            settingsOptions.MusicVolume => Settings.Instance.MusicVolume,
+            settingsOptions.SFXVolume => Settings.Instance.SFXVolume,
             _ => 0,
         };
     }
