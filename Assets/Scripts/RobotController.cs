@@ -8,6 +8,9 @@ public class RobotController : MonoBehaviour
 
     private float maxFuel;
     [SerializeField]
+    private Corpse corpse;
+
+    [SerializeField]
     private float _fuel;
     public float Fuel
     {
@@ -60,8 +63,15 @@ public class RobotController : MonoBehaviour
                 keyPressed = true;
             }
         }
+        else
+        {
+            Instantiate(corpse, transform.position, transform.rotation);
+            
+            Destroy(gameObject);
+        }
         
-        if (!keyPressed) {
+        if (!keyPressed)
+        {
             attachment.Idle();
         }
     }
