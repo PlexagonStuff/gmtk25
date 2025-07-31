@@ -5,6 +5,8 @@ using UnityEngine.Networking;
 public class RobotJetpack : RobotAttachment
 {
     public float pressure = 0;
+
+    public float pressureMultiplier = 0.005f;
     public float rotPressure = 1;
     private double prevDirection = 0;
     public float rotationalChange = (float)0.22;
@@ -47,8 +49,8 @@ public class RobotJetpack : RobotAttachment
 
     public override void UpArrow()
     {
-        pressure += (float)0.005;
-        rb.AddForce(rb.transform.up * pressure, ForceMode2D.Impulse);
+        pressure += (float)pressureMultiplier;
+        rb.AddForce(rb.transform.up * pressure * rb.gravityScale, ForceMode2D.Impulse);
         GetComponentInParent<RobotController>().Fuel -= (float)((pressure) * 0.5);
     }
 

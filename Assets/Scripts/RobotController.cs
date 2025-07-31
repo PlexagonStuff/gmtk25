@@ -35,28 +35,32 @@ public class RobotController : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         attachment.rb = rb;
-
+        rb.centerOfMass = new Vector2(0f, -0.5f); 
         maxFuel = Fuel;
     }
 
     void FixedUpdate()
     {
         bool keyPressed = false;
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        if (Fuel > 0)
         {
-            attachment.RightArrow();
-            keyPressed = true;
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+            {
+                attachment.RightArrow();
+                keyPressed = true;
+            }
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+            {
+                attachment.LeftArrow();
+                keyPressed = true;
+            }
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+            {
+                attachment.UpArrow();
+                keyPressed = true;
+            }
         }
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-        {
-            attachment.LeftArrow();
-            keyPressed = true;
-        }
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
-        {
-            attachment.UpArrow();
-            keyPressed = true;
-        }
+        
         if (!keyPressed) {
             attachment.Idle();
         }
