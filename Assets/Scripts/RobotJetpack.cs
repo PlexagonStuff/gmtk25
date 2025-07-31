@@ -50,6 +50,7 @@ public class RobotJetpack : RobotAttachment
     public override void UpArrow()
     {
         pressure += (float)pressureMultiplier;
+        pressure = Mathf.Clamp(pressure, 0, 0.5f);
         rb.AddForce(rb.transform.up * pressure * rb.gravityScale, ForceMode2D.Impulse);
         GetComponentInParent<RobotController>().Fuel -= (float)((pressure) * 0.5);
     }

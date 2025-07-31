@@ -6,8 +6,12 @@ public class CameraSmoother : MonoBehaviour
     public float maxDist = 3.0f;
     public Transform player;
 
-    void Update()
+    void FixedUpdate()
     {
+        if (player == null)
+        {
+            return;
+        }
         float step = moveSpeed * Time.deltaTime;
         Vector3 offset = player.position - transform.position;
         float distance = offset.magnitude;
