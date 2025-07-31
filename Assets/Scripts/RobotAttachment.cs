@@ -1,25 +1,31 @@
 using UnityEngine;
 
-public abstract class RobotAttachment : MonoBehaviour
+public class RobotAttachment : MonoBehaviour
 {
     public Rigidbody2D rb;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    private float defaultTopSpeed = 5;
+    private float defaultAccFactor = 0.1f;
+    private float defaultDragFactor = 0.2f;
+
+    public virtual void RightArrow()
+    {
+        rb.linearVelocityX = Mathf.Lerp(rb.linearVelocityX, defaultTopSpeed, defaultAccFactor);
+        Debug.Log(rb.linearVelocityX);
+    }
+
+    public virtual void LeftArrow()
+    {
+        rb.linearVelocityX = Mathf.Lerp(rb.linearVelocityX, -1*defaultTopSpeed, defaultAccFactor); 
+    }
+
+    public virtual void UpArrow()
     {
 
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void Idle()
     {
-
+        rb.linearVelocityX = Mathf.Lerp(rb.linearVelocityX, 0, defaultDragFactor);
     }
-
-    public abstract void RightArrow();
-
-    public abstract void LeftArrow();
-
-    public abstract void UpArrow();
-
-    public abstract void Idle();
 }
