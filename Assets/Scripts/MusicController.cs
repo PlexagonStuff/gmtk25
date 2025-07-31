@@ -4,6 +4,7 @@ public class MusicController : MonoBehaviour
 {
     private void Start()
     {
+        DontDestroyOnLoad(gameObject);
         Settings.Instance.OnMusicVolumeChanged.AddListener(SetVolume);
     }
 
