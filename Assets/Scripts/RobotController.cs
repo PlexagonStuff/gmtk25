@@ -40,17 +40,17 @@ public class RobotController : MonoBehaviour
     void FixedUpdate()
     {
         bool keyPressed = false;
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             attachment.RightArrow();
             keyPressed = true;
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             attachment.LeftArrow();
             keyPressed = true;
         }
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
             attachment.UpArrow();
             keyPressed = true;
