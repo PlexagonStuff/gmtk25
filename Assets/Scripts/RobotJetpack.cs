@@ -41,7 +41,7 @@ public class RobotJetpack : RobotAttachment
         var impulse = (rotationalChange * Mathf.Deg2Rad * direction * rotPressure * rb.inertia);
         rb.AddTorque(impulse, ForceMode2D.Impulse);
         prevDirection = direction;
-        GetComponentInParent<RobotController>().fuel -= (float)((rotPressure - 1) * 0.5);
+        GetComponentInParent<RobotController>().Fuel -= (float)((rotPressure - 1) * 0.5);
         
     }
 
@@ -49,7 +49,7 @@ public class RobotJetpack : RobotAttachment
     {
         pressure += (float)0.005;
         rb.AddForce(rb.transform.up * pressure, ForceMode2D.Impulse);
-        GetComponentInParent<RobotController>().fuel -= (float)((pressure) * 0.5);
+        GetComponentInParent<RobotController>().Fuel -= (float)((pressure) * 0.5);
     }
 
     public override void Idle()

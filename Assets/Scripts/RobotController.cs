@@ -6,19 +6,35 @@ public class RobotController : MonoBehaviour
     private RobotAttachment attachment;
     private Rigidbody2D rb;
 
-    public float fuel;
+    private float maxFuel;
+    [SerializeField]
+    private float _fuel;
+    public float Fuel
+    {
+        get
+        {
+            return _fuel;
+        }
+        set
+        {
+            if (_fuel != value)
+            {
+                _fuel = value;
+                fuelMat.SetFloat("_FuelLevel", _fuel/maxFuel);
+            } 
+        }    
+    }
+
+    [SerializeField]
+    private Material fuelMat;
     void Start()
     {
         attachment = GetComponentInChildren<RobotAttachment>();
 
         rb = GetComponent<Rigidbody2D>();
         attachment.rb = rb;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-
+        maxFuel = Fuel;
     }
 
     void FixedUpdate()
