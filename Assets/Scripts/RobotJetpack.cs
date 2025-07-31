@@ -5,6 +5,8 @@ using UnityEngine.Networking;
 public class RobotJetpack : RobotAttachment
 {
     public float pressure = 0;
+
+    public float pressureMultiplier = 0.005f;
     public float rotPressure = 1;
     private double prevDirection = 0;
     public float rotationalChange = (float)0.22;
@@ -41,15 +43,15 @@ public class RobotJetpack : RobotAttachment
         var impulse = (rotationalChange * Mathf.Deg2Rad * direction * rotPressure * rb.inertia);
         rb.AddTorque(impulse, ForceMode2D.Impulse);
         prevDirection = direction;
-        GetComponentInParent<RobotController>().fuel -= (float)((rotPressure - 1) * 0.5);
+        GetComponentInParent<RobotController>().Fuel -= (float)((rotPressure - 1) * 0.5);
         
     }
 
     public override void UpArrow()
     {
-        pressure += (float)0.005;
-        rb.AddForce(rb.transform.up * pressure, ForceMode2D.Impulse);
-        GetComponentInParent<RobotController>().fuel -= (float)((pressure) * 0.5);
+        pressure += (float)pressureMultiplier;
+        rb.AddForce(rb.transform.up * pressure * rb.gravityScale, ForceMode2D.Impulse);
+        GetComponentInParent<RobotController>().Fuel -= (float)((pressure) * 0.5);
     }
 
     public override void Idle()

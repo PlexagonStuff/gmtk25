@@ -2,35 +2,17 @@ using UnityEngine;
 
 public class RobotLegs : RobotAttachment
 {
-    public override void Idle()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void LeftArrow()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void RightArrow()
-    {
-        throw new System.NotImplementedException();
-    }
-
+    [SerializeField]
+    private float jumpHeight = 1f;
     public override void UpArrow()
     {
-        throw new System.NotImplementedException();
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        //This could be changed to world once we figure out the whole collision thing
+        LayerMask mask = LayerMask.GetMask("Default");
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, 0.5f, mask);
+        if (hit)
+        {
+            rb.AddForce(new Vector2(0, Mathf.Sqrt(rb.gravityScale * jumpHeight)), ForceMode2D.Impulse);
+        }
         
     }
 }

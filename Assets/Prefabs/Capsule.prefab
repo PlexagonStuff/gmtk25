@@ -103,9 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 941b065063071cb46ae222382a080fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachment: {fileID: 8427160330525693183}
-  rb: {fileID: 1127828301645701163}
-  fuel: 50
+  fuelMat: {fileID: 2100000, guid: 1f3d83a2b4383c641839d9b192a0bca8, type: 2}
 --- !u!50 &1127828301645701163
 Rigidbody2D:
   serializedVersion: 5
