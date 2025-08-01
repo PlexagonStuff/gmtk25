@@ -40,7 +40,7 @@ public class RobotController : MonoBehaviour
     [SerializeField]
     private Material fuelMat;
 
-    private List<GameObject> closeEnoughInteractables;
+    private List<GameObject> closeEnoughInteractables = new List<GameObject>();
     private GameObject closestInteractableObject;
     private bool isHoldingInteractable = false;
     private GameObject holdingLocation;
