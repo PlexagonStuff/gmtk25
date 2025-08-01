@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 7891a9db714123342b5a1100e5a373a1
+guid: f764ef2636fbd874b93c74eff04c4aa5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7594605479725550951
-    second: AUSTN_Idol_facefront_3_0
-  - first:
-      213: -8963387371198634809
-    second: AUSTN_Idol_facefront_3_1
+      213: -2907803138418277140
+    second: Tred_1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AUSTN_Idol_facefront_3_0
+      name: Tred_1_0
       rect:
         serializedVersion: 2
-        x: 305
-        y: 298
-        width: 527
-        height: 592
+        x: 225
+        y: 161
+        width: 569
+        height: 212
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 76dc6442275756960800000000000000
-      internalID: 7594605479725550951
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AUSTN_Idol_facefront_3_1
-      rect:
-        serializedVersion: 2
-        x: 246
-        y: 240
-        width: 14
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7c4ab7b0da6ab9380800000000000000
-      internalID: -8963387371198634809
+      spriteID: ce400d9a37865a7d0800000000000000
+      internalID: -2907803138418277140
       vertices: []
       indices: 
       edges: []
@@ -172,9 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      AUSTN_Idol_facefront_3_0: 7594605479725550951
-      AUSTN_Idol_facefront_3_1: -8963387371198634809
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
