@@ -38,7 +38,7 @@ public class RobotController : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         attachment.rb = rb;
-        rb.centerOfMass = new Vector2(0f, -0.5f); 
+        rb.centerOfMass = new Vector2(-0.6f, -4f); 
         maxFuel = Fuel;
     }
 

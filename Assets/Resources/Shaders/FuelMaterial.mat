@@ -25,7 +25,7 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _FuelLevel: -0.0019961963
+    - _FuelLevel: 0.12400369
     - _MaxPercent: 0.8
     - _MinPercent: 0.2
     m_Colors: []
