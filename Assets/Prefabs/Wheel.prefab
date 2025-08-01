@@ -105,9 +105,9 @@ MonoBehaviour:
   topSpeed: 10
   accFactor: 0.1
   dragFactor: 0.2
-  movementFuelPerSec: 6
+  movementFuelPerSec: 1
   jumpHeight: 3
-  selfBalanceFactor: 100
+  selfBalanceFactor: 50
   jumpFuelCost: 1
 --- !u!58 &6680665150804280585
 CircleCollider2D:

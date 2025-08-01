@@ -2541,7 +2541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4608456240847627469, guid: 0cfe1d73ba0bfbf498ab3cd135f655c7, type: 3}
       propertyPath: selfBalanceFactor
-      value: 750
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4608456240847627469, guid: 0cfe1d73ba0bfbf498ab3cd135f655c7, type: 3}
       propertyPath: movementFuelPerSec
