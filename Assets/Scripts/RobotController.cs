@@ -1,5 +1,7 @@
+using NUnit.Framework.Constraints;
 using UnityEditor.U2D.Aseprite;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class RobotController : MonoBehaviour
@@ -14,7 +16,10 @@ public class RobotController : MonoBehaviour
 
     [SerializeField]
     private float _fuel;
+
+    private float resetTimer = 0;
     public float Fuel
+
     {
         get
         {
@@ -25,23 +30,28 @@ public class RobotController : MonoBehaviour
             if (_fuel != value)
             {
                 _fuel = value;
-                fuelMat.SetFloat("_FuelLevel", _fuel/maxFuel);
-            } 
-        }    
+                fuelMat.SetFloat("_FuelLevel", _fuel / maxFuel);
+            }
+        }
     }
 
     [SerializeField]
     private Material fuelMat;
 
-    
+
     void Start()
     {
         attachment = GetComponentInChildren<RobotAttachment>();
 
         rb = GetComponent<Rigidbody2D>();
         attachment.rb = rb;
-        rb.centerOfMass = new Vector2(-0.6f, -4f); 
+        rb.centerOfMass = new Vector2(-0.6f, -4f);
         maxFuel = Fuel;
+    }
+
+    void Respawner()
+    {
+        SceneManager.LoadSceneAsync("RoundStart", LoadSceneMode.Additive);
     }
 
     void FixedUpdate()
@@ -69,19 +79,33 @@ public class RobotController : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.R))
             {
+                resetTimer += Time.fixedDeltaTime;
+                if (resetTimer < 1.5)
+                {
+                    return;
+                }
+                int ExplosionRadius = 1;
+                Vector2 pos = transform.position;
                 LayerMask mask = LayerMask.GetMask("GroundLayer");
+                Tilemap ground = FindAnyObjectByType<Tilemap>();//Get the tilemap
 
-                BoundsInt boombox = new BoundsInt(Vector3Int.FloorToInt(transform.position), new Vector3Int(2, 2, 0));
-                Debug.Log(boombox);
-                Tilemap tilemap = FindFirstObjectByType<Tilemap>();
-                tilemap.SetTilesBlock(boombox, null);
+                for (int x = -ExplosionRadius; x < ExplosionRadius; x++)
+                {
+                    for (int y = -ExplosionRadius; y < ExplosionRadius; y++) //find the box
+                    {
+                        Vector3Int Tilepos = ground.WorldToCell(new Vector2(pos.x + x, pos.y + y));
+                        ground.SetTile(Tilepos, null);
+                    }
+                }
+                Respawner();
+                Destroy(gameObject);
 
             }
         }
         else
         {
             Instantiate(corpse, transform.position, transform.rotation);
-
+            Respawner();
             Destroy(gameObject);
         }
 
@@ -93,6 +117,7 @@ public class RobotController : MonoBehaviour
         if (!keyPressed)
         {
             attachment.Idle();
+            resetTimer = 0;
         }
     }
 }
