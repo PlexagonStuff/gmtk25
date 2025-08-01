@@ -2532,14 +2532,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4608456240847627469, guid: 0cfe1d73ba0bfbf498ab3cd135f655c7, type: 3}
-      propertyPath: topSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4608456240847627469, guid: 0cfe1d73ba0bfbf498ab3cd135f655c7, type: 3}
-      propertyPath: jumpFuelCost
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4608456240847627469, guid: 0cfe1d73ba0bfbf498ab3cd135f655c7, type: 3}
       propertyPath: selfBalanceFactor
       value: 50
       objectReference: {fileID: 0}
