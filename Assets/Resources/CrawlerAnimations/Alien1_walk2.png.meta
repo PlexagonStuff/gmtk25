@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0469e8741309167499cd9715640787fa
+guid: 6695220ae0d77cc499e4f096684315a1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -461936755357311201
-    second: Alien1_walk5_0
+      213: 7397963388582827169
+    second: Alien1_walk2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Alien1_walk5_0
+      name: Alien1_walk2_0
       rect:
         serializedVersion: 2
-        x: 91
-        y: 71
-        width: 825
-        height: 768
+        x: 89
+        y: 74
+        width: 827
+        height: 764
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f1f1b3ce7fed699f0800000000000000
-      internalID: -461936755357311201
+      spriteID: 1a413dd7188daa660800000000000000
+      internalID: 7397963388582827169
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Alien1_walk5_0: -461936755357311201
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
