@@ -148,7 +148,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+<<<<<<< Updated upstream:Assets/Resources/CrawlerAnimations/Alien1_walk5.png.meta
       Alien1_walk5_0: -461936755357311201
+=======
+      Dirt_Tiles_0: 1158613216737972597
+>>>>>>> Stashed changes:Assets/Resources/Texture Assets/Level/Terrain/Dirt_Tiles.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
