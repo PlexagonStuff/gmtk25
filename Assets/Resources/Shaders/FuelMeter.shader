@@ -2,6 +2,7 @@ Shader "Unlit/FuelMeter"
 {
     Properties
     {
+        _MainTex("Texture", 2D) = "white" {}
         _FuelLevel ("Fuel Level", Float) = 0.0
         _MinPercent ("Clamp Color Min", Float) = 0.0
         _MaxPercent ("Clamp Color Max", Float) = 1.0
