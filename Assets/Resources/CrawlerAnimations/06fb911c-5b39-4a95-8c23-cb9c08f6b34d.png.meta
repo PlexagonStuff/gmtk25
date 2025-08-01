@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: c3bf51d2da1ddbb4aa0a18d5d7e85374
+guid: 6c884d5d6cf4fb148851472e881df833
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4951626904242860443
-    second: AUSTN_Travel_2_0
-  - first:
-      213: 3307899480486533521
-    second: AUSTN_Travel_2_1
+      213: -3614141723682685563
+    second: 06fb911c-5b39-4a95-8c23-cb9c08f6b34d_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -99,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AUSTN_Travel_2_0
+      name: 06fb911c-5b39-4a95-8c23-cb9c08f6b34d_0
       rect:
         serializedVersion: 2
-        x: 305
-        y: 317
-        width: 503
-        height: 606
+        x: 95
+        y: 81
+        width: 821
+        height: 754
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 56e4650c099484bb0800000000000000
-      internalID: -4951626904242860443
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AUSTN_Travel_2_1
-      rect:
-        serializedVersion: 2
-        x: 246
-        y: 259
-        width: 14
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 199591f2d0508ed20800000000000000
-      internalID: 3307899480486533521
+      spriteID: 58db9f7304df7ddc0800000000000000
+      internalID: -3614141723682685563
       vertices: []
       indices: 
       edges: []
@@ -172,9 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      AUSTN_Travel_2_0: -4951626904242860443
-      AUSTN_Travel_2_1: 3307899480486533521
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

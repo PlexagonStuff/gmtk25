@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 1627686608105453533}
   - component: {fileID: 280833090294750327}
   - component: {fileID: 1127828301645701163}
-  - component: {fileID: 5310686145124874124}
+  - component: {fileID: 1580058970778032560}
+  - component: {fileID: 317694910741250718}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Robot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: 5458803121095105173, guid: 6adbd8150e00d3140b21e49b7fa1f8a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,9 +103,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 941b065063071cb46ae222382a080fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  corpse: {fileID: 0}
-  _fuel: 0
-  fuelMat: {fileID: 2100000, guid: 1f3d83a2b4383c641839d9b192a0bca8, type: 2}
+  corpse: {fileID: 3277873815272786622, guid: 70aeeaaa8375b924393d853fedaf3f49, type: 3}
+  _fuel: 50
+  fuelMat: {fileID: 2100000, guid: 220386486c25852469e13d2e40a77151, type: 2}
 --- !u!50 &1127828301645701163
 Rigidbody2D:
   serializedVersion: 5
@@ -132,8 +133,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!70 &5310686145124874124
-CapsuleCollider2D:
+--- !u!61 &1580058970778032560
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -166,6 +167,37 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
+  m_Offset: {x: -0.7434442, y: -1.7487832}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.27, y: 5.98}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 3.1748395, y: 2.482433}
+  m_EdgeRadius: 0
+--- !u!95 &317694910741250718
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3787948462841108798}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9931642f4ee4fdd449fe4329d96d0cb9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
