@@ -1,4 +1,5 @@
 using NUnit.Framework.Constraints;
+using System.Collections;
 using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -38,6 +39,12 @@ public class RobotController : MonoBehaviour
     [SerializeField]
     private Material fuelMat;
 
+    public GameObject interactableObject;
+    public bool isHoldingInteractable = false;
+    public GameObject holdingLocation;
+    public float rightThrowSpeed = 5.0f;
+    public float upThrowSpeed = 5.0f;
+
 
     void Start()
     {
@@ -47,6 +54,7 @@ public class RobotController : MonoBehaviour
         attachment.rb = rb;
         rb.centerOfMass = new Vector2(-0.3f, -1.45f);
         maxFuel = Fuel;
+        holdingLocation = GameObject.Find("holdingLocation");
     }
 
     void Respawner()
@@ -118,6 +126,58 @@ public class RobotController : MonoBehaviour
         {
             attachment.Idle();
             resetTimer = 0;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            StartCoroutine(PickUpOrThrow());
+        }
+    }
+
+    private IEnumerator PickUpOrThrow()
+    {
+        if (interactableObject != null)
+        {
+            GameObject pickUpObject = interactableObject;
+            Rigidbody2D interactableRB = pickUpObject.GetComponent<Rigidbody2D>();
+            Collider2D col = pickUpObject.GetComponent<Collider2D>();
+            ThowableObjectBehavior tob = pickUpObject.GetComponent<ThowableObjectBehavior>();
+            if (!isHoldingInteractable)
+            {
+                //Disables collision so it can go through the player and makes it so it wont move once it is there
+                col.isTrigger = true;
+                interactableRB.gravityScale = 0;
+                pickUpObject.transform.SetParent(holdingLocation.transform, true);
+                tob.lerping = true;
+
+                //Lerp Variables
+                float t = 0.0f;
+                float lerpSpeed = 0.005f;
+                float minLerpDistance = 0.1f;
+                Vector3 startLoc = pickUpObject.transform.position;
+
+                //The Lerp
+                while (Vector3.Magnitude(pickUpObject.transform.position - holdingLocation.transform.position) > minLerpDistance)
+                {
+                    t += lerpSpeed;
+                    pickUpObject.transform.position = Vector3.Lerp(startLoc, holdingLocation.transform.position, t);
+                    yield return null;
+                }
+
+                //couple touch-ups
+                pickUpObject.transform.position = holdingLocation.transform.position;
+                isHoldingInteractable = true;
+                tob.lerping = false;
+                interactableObject = pickUpObject;
+            } else
+            {
+                Vector3 throwDirectionVector = transform.right * rightThrowSpeed + transform.up * upThrowSpeed;
+                interactableRB.gravityScale = 1;
+                col.isTrigger = false;
+                interactableObject.transform.parent = null;
+                interactableRB.AddForce(throwDirectionVector);
+                isHoldingInteractable = false;
+            }
         }
     }
 }
