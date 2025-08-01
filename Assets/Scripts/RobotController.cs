@@ -1,4 +1,6 @@
+using UnityEditor.U2D.Aseprite;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class RobotController : MonoBehaviour
 {
@@ -64,6 +66,16 @@ public class RobotController : MonoBehaviour
             {
                 attachment.UpArrow();
                 keyPressed = true;
+            }
+            if (Input.GetKey(KeyCode.R))
+            {
+                LayerMask mask = LayerMask.GetMask("GroundLayer");
+
+                BoundsInt boombox = new BoundsInt(Vector3Int.FloorToInt(transform.position), new Vector3Int(2, 2, 0));
+                Debug.Log(boombox);
+                Tilemap tilemap = FindFirstObjectByType<Tilemap>();
+                tilemap.SetTilesBlock(boombox, null);
+
             }
         }
         else
