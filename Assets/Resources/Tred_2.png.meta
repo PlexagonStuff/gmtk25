@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3248a90828c684426b2302b69a164b7a
+guid: b5723c45212bce14bbc391c2d2772eef
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6695628819467893213
-    second: AttachmentButton_Placeholder_0
+      213: -7216144450538395384
+    second: Tred_2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AttachmentButton_Placeholder_0
+      name: Tred_2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1080
-        height: 1080
+        x: 225
+        y: 161
+        width: 569
+        height: 212
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3268fbb40195413a0800000000000000
-      internalID: -6695628819467893213
+      spriteID: 809a0c1eada1bdb90800000000000000
+      internalID: -7216144450538395384
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      AttachmentButton_Placeholder_0: -6695628819467893213
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

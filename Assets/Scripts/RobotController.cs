@@ -52,15 +52,27 @@ public class RobotController : MonoBehaviour
                 attachment.RightArrow();
                 keyPressed = true;
             }
+            if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+            {
+                attachment.RightArrowUp();
+            }
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             {
                 attachment.LeftArrow();
                 keyPressed = true;
             }
+            if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.LeftArrow))
+            {
+                attachment.LeftArrowUp();
+            }
             if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
             {
                 attachment.UpArrow();
                 keyPressed = true;
+            }
+            if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.UpArrow))
+            {
+                attachment.UpArrowUp();
             }
         }
         else
@@ -69,7 +81,7 @@ public class RobotController : MonoBehaviour
             
             Destroy(gameObject);
         }
-        
+
         if (!keyPressed)
         {
             attachment.Idle();

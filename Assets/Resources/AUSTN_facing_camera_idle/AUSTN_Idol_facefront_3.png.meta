@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 3248a90828c684426b2302b69a164b7a
+guid: 7891a9db714123342b5a1100e5a373a1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6695628819467893213
-    second: AttachmentButton_Placeholder_0
+      213: 7594605479725550951
+    second: AUSTN_Idol_facefront_3_0
+  - first:
+      213: -8963387371198634809
+    second: AUSTN_Idol_facefront_3_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AttachmentButton_Placeholder_0
+      name: AUSTN_Idol_facefront_3_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1080
-        height: 1080
+        x: 305
+        y: 298
+        width: 527
+        height: 592
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3268fbb40195413a0800000000000000
-      internalID: -6695628819467893213
+      spriteID: 76dc6442275756960800000000000000
+      internalID: 7594605479725550951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AUSTN_Idol_facefront_3_1
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 240
+        width: 14
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c4ab7b0da6ab9380800000000000000
+      internalID: -8963387371198634809
       vertices: []
       indices: 
       edges: []
@@ -148,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      AttachmentButton_Placeholder_0: -6695628819467893213
+      AUSTN_Idol_facefront_3_0: 7594605479725550951
+      AUSTN_Idol_facefront_3_1: -8963387371198634809
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -19,16 +19,22 @@ public class RobotAttachment : MonoBehaviour
         transform.parent.GetComponent<RobotController>().Fuel -= movementFuelPerSec * Time.fixedDeltaTime;
     }
 
+    public virtual void RightArrowUp() { }
+
     public virtual void LeftArrow()
     {
-        rb.linearVelocityX = Mathf.Lerp(rb.linearVelocityX, -1*topSpeed, accFactor); 
+        rb.linearVelocityX = Mathf.Lerp(rb.linearVelocityX, -1 * topSpeed, accFactor);
         transform.parent.GetComponent<RobotController>().Fuel -= movementFuelPerSec * Time.fixedDeltaTime;
     }
+
+    public virtual void LeftArrowUp() { }
 
     public virtual void UpArrow()
     {
 
     }
+
+    public virtual void UpArrowUp() { }
 
     public virtual void Idle()
     {

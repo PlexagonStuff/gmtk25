@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FuelMeter
+  m_Name: FuelMaterial
   m_Shader: {fileID: 4800000, guid: 8a65c1081266ead41b8fbd1118aecc4b, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -22,16 +22,12 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+    m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _FuelLevel: 0.013900575
-    - _MaxPercent: 0.8
-    - _MinPercent: 0.2
+    - _FuelLevel: 0
+    - _MaxPercent: 1
+    - _MinPercent: 0
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
