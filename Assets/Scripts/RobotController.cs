@@ -4,6 +4,7 @@ using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
+using System.Collections.Generic;
 
 public class RobotController : MonoBehaviour
 {
@@ -39,20 +40,23 @@ public class RobotController : MonoBehaviour
     [SerializeField]
     private Material fuelMat;
 
-    private GameObject interactableObject;
+    private List<GameObject> closeEnoughInteractables;
+    private GameObject closestInteractableObject;
     private bool isHoldingInteractable = false;
     private GameObject holdingLocation;
+    private bool throwing = false;
     public float rightThrowSpeed = 5.0f;
     public float upThrowSpeed = 5.0f;
+    public float throwCooldown = 1.0f;
 
     public GameObject GetInteractableObject()
     {
-        return interactableObject;
+        return closestInteractableObject;
     }
 
     public void SetInteractableObject(GameObject _interactableObject)
     {
-        interactableObject = _interactableObject;
+        closestInteractableObject = _interactableObject;
     }
 
     public bool GetIsHoldingInteractable()
@@ -60,7 +64,21 @@ public class RobotController : MonoBehaviour
         return isHoldingInteractable;
     }
 
+    public void addCloseInteractable(GameObject go)
+    {
+        if (!closeEnoughInteractables.Contains(go))
+        {
+            closeEnoughInteractables.Add(go);
+        }
+    }
 
+    public void removeCloseInteractable(GameObject go)
+    {
+        if (closeEnoughInteractables.Contains(go))
+        {
+            closeEnoughInteractables.Remove(go);
+        }
+    }
 
     void Start()
     {
@@ -144,7 +162,7 @@ public class RobotController : MonoBehaviour
             resetTimer = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKey(KeyCode.E) && !throwing)
         {
             StartCoroutine(PickUpOrThrow());
         }
@@ -152,9 +170,23 @@ public class RobotController : MonoBehaviour
 
     private IEnumerator PickUpOrThrow()
     {
-        if (interactableObject != null)
+        float closestDist = Mathf.Infinity;
+        GameObject closest = null;
+
+        foreach (GameObject obj in closeEnoughInteractables)
         {
-            GameObject pickUpObject = interactableObject;
+            float dist = Vector2.Distance(transform.position, obj.transform.position);
+            if (dist < closestDist)
+            {
+                closestDist = dist;
+                closest = obj;
+            }
+        }
+        closestInteractableObject = closest;
+
+        if (closestInteractableObject != null)
+        {
+            GameObject pickUpObject = closestInteractableObject;
             Rigidbody2D interactableRB = pickUpObject.GetComponent<Rigidbody2D>();
             Collider2D col = pickUpObject.GetComponent<Collider2D>();
             ThowableObjectBehavior tob = pickUpObject.GetComponent<ThowableObjectBehavior>();
@@ -184,15 +216,18 @@ public class RobotController : MonoBehaviour
                 pickUpObject.transform.position = holdingLocation.transform.position;
                 isHoldingInteractable = true;
                 tob.setLerping(false);
-                interactableObject = pickUpObject;
+                closestInteractableObject = pickUpObject;
             } else
             {
                 Vector3 throwDirectionVector = transform.right * rightThrowSpeed + transform.up * upThrowSpeed;
                 interactableRB.gravityScale = 1;
                 col.isTrigger = false;
-                interactableObject.transform.parent = null;
+                closestInteractableObject.transform.parent = null;
                 interactableRB.AddForce(throwDirectionVector);
                 isHoldingInteractable = false;
+                throwing = true;
+                yield return new WaitForSeconds(throwCooldown);
+                throwing = false;
             }
         }
     }

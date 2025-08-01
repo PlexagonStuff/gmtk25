@@ -18,30 +18,4 @@ public class ThowableObjectBehavior : MonoBehaviour
             transform.rotation = transform.parent.rotation;
         }
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        GameObject go = collision.gameObject;
-        if (go.tag == "Player")
-        {
-            RobotController rc = go.GetComponent<RobotController>();
-            if (!rc.GetIsHoldingInteractable())
-            {
-                rc.SetInteractableObject(gameObject);
-            }
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        GameObject go = collision.gameObject;
-        if (go.tag == "Player")
-        {
-            RobotController rc = go.GetComponent<RobotController>();
-            if (rc.GetInteractableObject() == gameObject)
-            {
-                rc.SetInteractableObject(null);
-            }
-        }
-    }
 }
