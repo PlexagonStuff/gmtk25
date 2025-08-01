@@ -39,11 +39,27 @@ public class RobotController : MonoBehaviour
     [SerializeField]
     private Material fuelMat;
 
-    public GameObject interactableObject;
-    public bool isHoldingInteractable = false;
-    public GameObject holdingLocation;
+    private GameObject interactableObject;
+    private bool isHoldingInteractable = false;
+    private GameObject holdingLocation;
     public float rightThrowSpeed = 5.0f;
     public float upThrowSpeed = 5.0f;
+
+    public GameObject GetInteractableObject()
+    {
+        return interactableObject;
+    }
+
+    public void SetInteractableObject(GameObject _interactableObject)
+    {
+        interactableObject = _interactableObject;
+    }
+
+    public bool GetIsHoldingInteractable()
+    {
+        return isHoldingInteractable;
+    }
+
 
 
     void Start()
@@ -148,7 +164,7 @@ public class RobotController : MonoBehaviour
                 col.isTrigger = true;
                 interactableRB.gravityScale = 0;
                 pickUpObject.transform.SetParent(holdingLocation.transform, true);
-                tob.lerping = true;
+                tob.setLerping(true);
 
                 //Lerp Variables
                 float t = 0.0f;
@@ -167,7 +183,7 @@ public class RobotController : MonoBehaviour
                 //couple touch-ups
                 pickUpObject.transform.position = holdingLocation.transform.position;
                 isHoldingInteractable = true;
-                tob.lerping = false;
+                tob.setLerping(false);
                 interactableObject = pickUpObject;
             } else
             {

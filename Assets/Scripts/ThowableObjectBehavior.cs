@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class ThowableObjectBehavior : MonoBehaviour
 {
-    public bool lerping = false;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private bool lerping = false;
+    
+    public void setLerping(bool _lerping)
     {
-        
+        lerping = _lerping;
     }
 
     // Update is called once per frame
@@ -25,9 +25,9 @@ public class ThowableObjectBehavior : MonoBehaviour
         if (go.tag == "Player")
         {
             RobotController rc = go.GetComponent<RobotController>();
-            if (!rc.isHoldingInteractable)
+            if (!rc.GetIsHoldingInteractable())
             {
-                rc.interactableObject = gameObject;
+                rc.SetInteractableObject(gameObject);
             }
         }
     }
@@ -38,9 +38,9 @@ public class ThowableObjectBehavior : MonoBehaviour
         if (go.tag == "Player")
         {
             RobotController rc = go.GetComponent<RobotController>();
-            if (rc.interactableObject == gameObject)
+            if (rc.GetInteractableObject() == gameObject)
             {
-                rc.interactableObject = null;
+                rc.SetInteractableObject(null);
             }
         }
     }
