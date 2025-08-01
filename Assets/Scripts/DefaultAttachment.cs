@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class DefaultAttachment : RobotAttachment
 {
+    public void Start()
+    {
+        GetComponent<Animator>().speed = 0;
+    }
+
     public override void LeftArrow()
     {
         base.LeftArrow();
@@ -13,14 +18,9 @@ public class DefaultAttachment : RobotAttachment
         base.RightArrow();
         GetComponent<Animator>().speed = 1;
     }
-    public override void LeftArrowUp()
+    public override void NoLeftRight()
     {
-        base.LeftArrowUp();
-        GetComponent<Animator>().speed = 0;
-    }
-    public override void RightArrowUp()
-    {
-        base.RightArrowUp();
+        base.NoLeftRight();
         GetComponent<Animator>().speed = 0;
     }
 }
