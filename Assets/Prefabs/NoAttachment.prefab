@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  topSpeed: 5
+  topSpeed: 10
   accFactor: 0.1
   dragFactor: 0.2
   movementFuelPerSec: 5
