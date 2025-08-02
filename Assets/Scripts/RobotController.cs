@@ -40,6 +40,9 @@ public class RobotController : MonoBehaviour
     [SerializeField]
     private Material fuelMat;
 
+    public float centerOfMassX = 0.1f;
+    public float centerOfMassY = 0.1f;
+
     private List<GameObject> closeEnoughInteractables = new List<GameObject>();
     private GameObject closestInteractableObject;
     private bool isHoldingInteractable = false;
@@ -86,7 +89,7 @@ public class RobotController : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         attachment.rb = rb;
-        rb.centerOfMass = new Vector2(-0.3f, -1.45f);
+        rb.centerOfMass = new Vector2(-centerOfMassX, centerOfMassY);
         maxFuel = Fuel;
         holdingLocation = GameObject.Find("holdingLocation");
     }
