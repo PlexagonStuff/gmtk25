@@ -31,7 +31,7 @@ public class InfoManager : MonoBehaviour
     public void SwichSelectedType(activeModule modType, string attachmentName, string attachmentDescription)
     {
         attachNameTextBox = GameObject.Find("Attachment Name").GetComponent<TextMeshProUGUI>();
-        attachDescTextBox = GameObject.Find("AttacchmentDesc").GetComponent<TextMeshProUGUI>();
+        attachDescTextBox = GameObject.Find("AttachmentBody").GetComponent<TextMeshProUGUI>();
         switch (modType)
         {
             case (activeModule.basic):

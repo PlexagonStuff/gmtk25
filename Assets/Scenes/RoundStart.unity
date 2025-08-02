@@ -672,6 +672,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modType: 1
+  attachmentName: Wheel Attachment
+  attachmentDescription: This attachment is quick and has the ability to jump! But
+    as a trade off it guzzles fuel like theres no tomorrow
 --- !u!1 &745782757
 GameObject:
   m_ObjectHideFlags: 0
@@ -2144,6 +2147,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modType: 2
+  attachmentName: Hover Attachment
+  attachmentDescription: Levitate above the ground like you're riding a hoverboard!
+    This attachment floats above the ground and can help you get past enemies, but
+    it's not quite as fuel effecient as the tank treads
 --- !u!1 &1919641938
 GameObject:
   m_ObjectHideFlags: 0
@@ -2171,8 +2178,8 @@ RectTransform:
   m_GameObject: {fileID: 1919641938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.7, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1883972687}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2194,15 +2201,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -3706071244748832181, guid: f97322dc41ae43940b7642e1cade5b80, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2307,7 +2314,7 @@ GameObject:
   - component: {fileID: 2010882936}
   - component: {fileID: 2010882935}
   m_Layer: 5
-  m_Name: Body
+  m_Name: AttachmentBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2352,10 +2359,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: sadfdfsaf
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 10ae40b3c0e6e6842a98bc6dab23c9b4, type: 2}
+  m_sharedMaterial: {fileID: 2471037056002106458, guid: 10ae40b3c0e6e6842a98bc6dab23c9b4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2379,8 +2386,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2578,6 +2585,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modType: 0
+  attachmentName: Basic Attachment
+  attachmentDescription: This is the basic tire treads attachment, it doesn't have
+    much utility but it is pretty fuel efficient
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

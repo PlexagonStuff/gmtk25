@@ -98,9 +98,11 @@ public class RobotController : MonoBehaviour
         holdingLocation = GameObject.Find("holdingLocation");
     }
 
-    void Respawner()
+    private void Respawner()
     {
-        SceneManager.LoadSceneAsync("RoundStart", LoadSceneMode.Additive);
+        Instantiate(corpse, transform.position, transform.rotation);
+
+        Destroy(gameObject);
     }
 
     void FixedUpdate()
@@ -150,17 +152,13 @@ public class RobotController : MonoBehaviour
                         ground.SetTile(Tilepos, null);
                     }
                 }*/
-                Instantiate(corpse, transform.position, transform.rotation);
                 Respawner();
-                Destroy(gameObject);
 
             }
         }
         else
         {
-            Instantiate(corpse, transform.position, transform.rotation);
             Respawner();
-            Destroy(gameObject);
         }
 
         if (!leftRightPressed)
@@ -178,11 +176,22 @@ public class RobotController : MonoBehaviour
         {
             StartCoroutine(PickUpOrThrow());
         }
+
+        if (Mathf.Abs(rb.linearVelocityX) < .5)
+        {
+            rb.linearVelocityX = 0;
+        }
     }
 
     public float maxTiltAngle = 15f;
     void LateUpdate()
     {
+        if (rb.linearVelocityX < .1)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            return;
+        }
+
         //clampRotation so that he doesn't fall over
         Vector3 currentRotation = transform.eulerAngles;
         float z = currentRotation.z > 180 ? currentRotation.z - 360 : currentRotation.z;

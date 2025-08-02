@@ -7,9 +7,12 @@ public class RoundStartButtons : MonoBehaviour
     public RobotAttachment[] attachments;
 
     private InfoManager im;
+
+    private GameObject startLoc;
     private void Start()
     {
         im = GameObject.Find("Manager").GetComponent<InfoManager>();
+        startLoc = GameObject.Find("StartPos");
     }
 
     public void StartButton()
@@ -27,8 +30,8 @@ public class RoundStartButtons : MonoBehaviour
         Instantiate(attachment, offset, Quaternion.identity, realPlayerObject.transform);
 
         //fix scale and stuff
+        realPlayerObject.transform.position = startLoc.transform.position;
         realPlayerObject.transform.localScale = new Vector2(0.5f, 0.5f);
-        realPlayerObject.transform.position = new Vector2(-1.04f, 3.16f);
         CameraSmoother[] cameras = FindObjectsByType<CameraSmoother>(FindObjectsSortMode.None);
         Debug.Log(cameras);
         foreach (CameraSmoother camera in cameras)

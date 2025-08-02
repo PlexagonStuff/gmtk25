@@ -5,9 +5,14 @@ public class CameraSmoother : MonoBehaviour
     public float moveSpeed = 10.0f;
     public float maxDist = 3.0f;
     public Transform player;
+    public bool doCameraSmoothing = true;
 
     void FixedUpdate()
     {
+        if (!doCameraSmoothing)
+        {
+            return;
+        }
         if (player == null)
         {
             return;
