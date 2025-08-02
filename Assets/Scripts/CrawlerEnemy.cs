@@ -24,6 +24,16 @@ public class CrawlerEnemy : MonoBehaviour
         {
             // No ground ahead, turn around
             Flip();
+            return;
+        }
+        Debug.Log(transform.right * (movingRight ? 1 : -1));
+        hit = Physics2D.Raycast(transform.position, transform.right * (movingRight ? 1 : -1), groundCheckDistance, groundLayer);
+        if (hit)
+        {
+            Debug.Log("Does this work?");
+            // No ground ahead, turn around
+            Flip();
+            return;
         }
     }
 
