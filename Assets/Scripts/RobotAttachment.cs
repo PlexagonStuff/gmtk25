@@ -18,15 +18,19 @@ public class RobotAttachment : MonoBehaviour
     {
         LayerMask mask = LayerMask.GetMask("GroundLayer");
         RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(0, -0.5f * transform.localScale.x), -transform.up, 0.5f, mask);
+        /*
         Debug.Log(hit.normal);
         Debug.Log(transform.up);
+        */
         if (hit.normal != new Vector2(0, 1))
 
         {
+            /*
             Debug.Log("Current Direction");
             Debug.Log((Vector3)direction);
             Debug.Log("Hit Normal");
             Debug.Log((Vector3)hit.normal);
+            */
             return (Vector2)Vector3.ProjectOnPlane((Vector3)direction, (Vector3)hit.normal);
         }
         else
@@ -38,7 +42,7 @@ public class RobotAttachment : MonoBehaviour
     {
         Vector2 direction = checkSlope(new Vector2(1, 0));
         Mathf.Lerp(rb.linearVelocityX, topSpeed, accFactor);
-        Debug.Log(direction);
+        //Debug.Log(direction);
         rb.linearVelocityX = Mathf.Lerp(rb.linearVelocityX,topSpeed, accFactor);
         transform.parent.GetComponent<RobotController>().Fuel -= movementFuelPerSec * Time.fixedDeltaTime;
     }
@@ -48,7 +52,7 @@ public class RobotAttachment : MonoBehaviour
     {
         Vector2 direction = checkSlope(new Vector2(-1, 0));
         Mathf.Lerp(rb.linearVelocityX, topSpeed, accFactor);
-        Debug.Log(direction);
+        //Debug.Log(direction);
         rb.linearVelocityX = Mathf.Lerp(rb.linearVelocityX, -1 * topSpeed, accFactor);
         transform.parent.GetComponent<RobotController>().Fuel -= movementFuelPerSec * Time.fixedDeltaTime;
     }

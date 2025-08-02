@@ -9,6 +9,7 @@ using System.Collections.Generic;
 public class RobotController : MonoBehaviour
 {
 
+    private SpriteRenderer fuelMeterSR;
     private RobotAttachment attachment;
     private Rigidbody2D rb;
 
@@ -52,6 +53,8 @@ public class RobotController : MonoBehaviour
     public float upThrowSpeed = 5.0f;
     public float throwCooldown = 1.0f;
 
+    public bool facingRight = true;
+
     public GameObject GetInteractableObject()
     {
         return closestInteractableObject;
@@ -87,6 +90,7 @@ public class RobotController : MonoBehaviour
     {
         attachment = GetComponentInChildren<RobotAttachment>();
 
+        fuelMeterSR = GameObject.Find("Fuel Meter").GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         attachment.rb = rb;
         rb.centerOfMass = new Vector2(-centerOfMassX, centerOfMassY);
@@ -110,12 +114,16 @@ public class RobotController : MonoBehaviour
                 attachment.RightArrow();
                 keyPressed = true;
                 leftRightPressed = true;
+                facingRight = true;
+                FaceDirection(1);
             }
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             {
                 attachment.LeftArrow();
                 keyPressed = true;
                 leftRightPressed = true;
+                facingRight = false;
+                FaceDirection(-1);
             }
             if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
             {
@@ -172,6 +180,24 @@ public class RobotController : MonoBehaviour
         }
     }
 
+    public float maxTiltAngle = 15f;
+    void LateUpdate()
+    {
+        //clampRotation so that he doesn't fall over
+        Vector3 currentRotation = transform.eulerAngles;
+        float z = currentRotation.z > 180 ? currentRotation.z - 360 : currentRotation.z;
+        z = Mathf.Clamp(z, -maxTiltAngle, maxTiltAngle);
+        transform.rotation = Quaternion.Euler(0, 0, z);
+    }
+
+    void FaceDirection(int direction)
+    {
+        Vector3 scale = transform.localScale;
+        scale.x = Mathf.Abs(scale.x) * direction;
+        transform.localScale = scale;
+        fuelMeterSR.flipX = direction > 0 ? false : true;
+    }
+
     private IEnumerator PickUpOrThrow()
     {
         float closestDist = Mathf.Infinity;
@@ -223,8 +249,7 @@ public class RobotController : MonoBehaviour
                 closestInteractableObject = pickUpObject;
             } else
             {
-                Vector3 throwDirectionVector = transform.right * rightThrowSpeed + transform.up * upThrowSpeed;
-                Debug.Log(throwDirectionVector);
+                Vector3 throwDirectionVector = transform.right * rightThrowSpeed * (facingRight ? 1 : -1) + transform.up * upThrowSpeed;
                 interactableRB.gravityScale = 1;
                 col.isTrigger = false;
                 closestInteractableObject.transform.parent = null;

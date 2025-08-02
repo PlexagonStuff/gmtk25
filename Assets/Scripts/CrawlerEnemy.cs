@@ -26,7 +26,6 @@ public class CrawlerEnemy : MonoBehaviour
             Flip();
             return;
         }
-        Debug.Log(transform.right * (movingRight ? 1 : -1));
         hit = Physics2D.Raycast(transform.position, transform.right * (movingRight ? 1 : -1), groundCheckDistance, groundLayer);
         if (hit)
         {
