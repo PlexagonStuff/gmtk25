@@ -33,7 +33,7 @@ public class RobotWheel : RobotAttachment
     {
         //This could be changed to world once we figure out the whole collision thing
         LayerMask mask = LayerMask.GetMask("GroundLayer");
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(0, -0.5f*transform.localScale.x), -transform.up, 0.1f, mask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(0, -0.8f*transform.localScale.x), -transform.up, 0.1f, mask);
         if (hit)
         {
             rb.linearVelocityY = Mathf.Sqrt(2 * 9.81f*rb.gravityScale * jumpHeight);

@@ -1084,6 +1084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 280833090294750327, guid: f541399ab68052c48830d9b40b5a2898, type: 3}
   attachments:
+  - {fileID: 5445301456374060874, guid: d09ea7ed5f0b8b046aed82f42a1f6990, type: 3}
   - {fileID: 4608456240847627469, guid: 0cfe1d73ba0bfbf498ab3cd135f655c7, type: 3}
   - {fileID: 1929400869723590919, guid: 76020659b47f8214eb7f8d6b76862ecf, type: 3}
 --- !u!1 &1340096102

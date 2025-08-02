@@ -40,8 +40,8 @@ public class RobotController : MonoBehaviour
     [SerializeField]
     private Material fuelMat;
 
-    public float centerOfMassX = 0.1f;
-    public float centerOfMassY = 0.1f;
+    public float centerOfMassX = 0f;
+    public float centerOfMassY = -0.5f;
 
     private List<GameObject> closeEnoughInteractables = new List<GameObject>();
     private GameObject closestInteractableObject;
@@ -125,11 +125,11 @@ public class RobotController : MonoBehaviour
             if (Input.GetKey(KeyCode.R))
             {
                 resetTimer += Time.fixedDeltaTime;
-                if (resetTimer < 1.5)
+                if (resetTimer < 0.5)
                 {
                     return;
                 }
-                int ExplosionRadius = 1;
+                /*int ExplosionRadius = 2;
                 Vector2 pos = transform.position;
                 LayerMask mask = LayerMask.GetMask("GroundLayer");
                 Tilemap ground = FindAnyObjectByType<Tilemap>();//Get the tilemap
@@ -141,7 +141,8 @@ public class RobotController : MonoBehaviour
                         Vector3Int Tilepos = ground.WorldToCell(new Vector2(pos.x + x, pos.y + y));
                         ground.SetTile(Tilepos, null);
                     }
-                }
+                }*/
+                Instantiate(corpse, transform.position, transform.rotation);
                 Respawner();
                 Destroy(gameObject);
 
@@ -223,10 +224,11 @@ public class RobotController : MonoBehaviour
             } else
             {
                 Vector3 throwDirectionVector = transform.right * rightThrowSpeed + transform.up * upThrowSpeed;
+                Debug.Log(throwDirectionVector);
                 interactableRB.gravityScale = 1;
                 col.isTrigger = false;
                 closestInteractableObject.transform.parent = null;
-                interactableRB.AddForce(throwDirectionVector);
+                interactableRB.AddForce(throwDirectionVector, ForceMode2D.Impulse);
                 isHoldingInteractable = false;
                 throwing = true;
                 yield return new WaitForSeconds(throwCooldown);

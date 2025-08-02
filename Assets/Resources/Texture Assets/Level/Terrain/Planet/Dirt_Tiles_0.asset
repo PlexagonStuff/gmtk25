@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: Dirt_Tiles_0
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 4829127318624084843, guid: 2a0949782769f6e42b5465c34ea027b0, type: 3}
+  m_Sprite: {fileID: -332295529, guid: 6d111f7ea83efff42aa009a84577bfe1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
