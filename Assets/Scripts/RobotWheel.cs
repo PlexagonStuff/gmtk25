@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using System.Collections;
 
 public class RobotWheel : RobotAttachment
 {
@@ -10,11 +11,22 @@ public class RobotWheel : RobotAttachment
     [SerializeField]
     private float jumpFuelCost = 5;
 
+    Rigidbody2D rb;
+    Animator anim;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+        rb = transform.parent.GetComponent<Rigidbody2D>();
+    }
+
     private void FixedUpdate()
     {
         float scale = selfBalanceFactor * (Vector2.Dot(transform.up, Vector2.up) - 1) / -2;
         float sign = transform.up.x < 0 ? -1 : 1;
         rb.AddTorque(sign * scale);
+
+        anim.SetFloat("Speed", Mathf.Abs(rb.linearVelocityX));
     }
 
     public override void UpArrow()
@@ -26,7 +38,16 @@ public class RobotWheel : RobotAttachment
         {
             rb.linearVelocityY = Mathf.Sqrt(2 * 9.81f*rb.gravityScale * jumpHeight);
             transform.parent.GetComponent<RobotController>().Fuel -= jumpFuelCost;
+
+            anim.SetBool("jump", true);
+            StartCoroutine(EndJump());
         }
 
+    }
+
+    private IEnumerator EndJump()
+    {
+        yield return new WaitForSeconds(0.05f);
+        anim.SetBool("jump", false);
     }
 }
