@@ -35,7 +35,14 @@ public class Corpse : MonoBehaviour
         {
             if (GetComponent<Rigidbody2D>().linearVelocity.magnitude > .1f)
             {
-                StartCoroutine(collision.gameObject.GetComponent<CrawlerEnemy>().Die());
+                CrawlerEnemy ce = collision.gameObject.GetComponent<CrawlerEnemy>();
+                if (ce != null)
+                {
+                    StartCoroutine(ce.Die());
+                } else
+                {
+                    StartCoroutine(collision.gameObject.GetComponent<FloatingEnemyBehavior>().Die());
+                }
                 Destroy(gameObject);
             }
         }
