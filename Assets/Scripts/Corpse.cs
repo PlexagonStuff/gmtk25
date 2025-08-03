@@ -35,7 +35,7 @@ public class Corpse : MonoBehaviour
         {
             if (GetComponent<Rigidbody2D>().linearVelocity.magnitude > .1f)
             {
-                Destroy(collision.gameObject);
+                StartCoroutine(collision.gameObject.GetComponent<CrawlerEnemy>().Die());
                 Destroy(gameObject);
             }
         }

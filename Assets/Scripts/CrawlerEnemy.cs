@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class CrawlerEnemy : MonoBehaviour
 {
@@ -47,5 +48,12 @@ public class CrawlerEnemy : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Flip();
+    }
+
+    public IEnumerator Die()
+    {
+        GetComponent<Animator>().SetBool("Die", true);
+        yield return new WaitForSeconds(1.0f);
+        Destroy(this.gameObject);
     }
 }
