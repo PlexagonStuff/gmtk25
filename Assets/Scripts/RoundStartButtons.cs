@@ -9,6 +9,8 @@ public class RoundStartButtons : MonoBehaviour
     private InfoManager im;
 
     private GameObject startLoc;
+
+    FuelDepot fd;
     private void Start()
     {
         im = GameObject.Find("Manager").GetComponent<InfoManager>();
@@ -31,7 +33,7 @@ public class RoundStartButtons : MonoBehaviour
 
         //fix scale and stuff
         realPlayerObject.transform.position = startLoc.transform.position;
-        realPlayerObject.transform.localScale = new Vector2(0.5f, 0.5f);
+        realPlayerObject.transform.localScale = new Vector2(0.95f, 0.95f);
         CameraSmoother[] cameras = FindObjectsByType<CameraSmoother>(FindObjectsSortMode.None);
         Debug.Log(cameras);
         foreach (CameraSmoother camera in cameras)
@@ -41,6 +43,4 @@ public class RoundStartButtons : MonoBehaviour
         
         SceneManager.UnloadSceneAsync("RoundStart");
     }
-
-    
 }

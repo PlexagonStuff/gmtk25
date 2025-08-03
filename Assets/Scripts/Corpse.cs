@@ -28,4 +28,16 @@ public class Corpse : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = DeathEndState;
         isDead = true;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (isDead && collision.gameObject.tag == "Dangerous")
+        {
+            if (GetComponent<Rigidbody2D>().linearVelocity.magnitude > .1f)
+            {
+                Destroy(collision.gameObject);
+                Destroy(gameObject);
+            }
+        }
+    }
 }

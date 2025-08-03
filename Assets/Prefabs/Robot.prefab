@@ -199,9 +199,11 @@ MonoBehaviour:
   fuelMat: {fileID: 2100000, guid: 220386486c25852469e13d2e40a77151, type: 2}
   centerOfMassX: 0.1
   centerOfMassY: -0.5
-  rightThrowSpeed: 5
-  upThrowSpeed: 5
+  rightThrowSpeed: 3
+  upThrowSpeed: 2
   throwCooldown: 1
+  facingRight: 1
+  maxTiltAngle: 15
 --- !u!50 &1127828301645701163
 Rigidbody2D:
   serializedVersion: 5
@@ -464,7 +466,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

@@ -55,6 +55,8 @@ public class RobotController : MonoBehaviour
 
     public bool facingRight = true;
 
+    
+
     public GameObject GetInteractableObject()
     {
         return closestInteractableObject;
@@ -100,7 +102,7 @@ public class RobotController : MonoBehaviour
 
     private void Respawner()
     {
-        Instantiate(corpse, transform.position, transform.rotation);
+        Instantiate(corpse, transform.position, Quaternion.identity);
 
         Destroy(gameObject);
     }
@@ -177,6 +179,12 @@ public class RobotController : MonoBehaviour
             StartCoroutine(PickUpOrThrow());
         }
 
+        if (throwScale > 2 || (!Input.GetKey(KeyCode.E) && throwScale > 0))
+        {
+            throwScale = 2;
+            StartCoroutine(ThrowObject());
+        }
+
         if (Mathf.Abs(rb.linearVelocityX) < .5)
         {
             rb.linearVelocityX = 0;
@@ -206,6 +214,8 @@ public class RobotController : MonoBehaviour
         transform.localScale = scale;
         fuelMeterSR.flipX = direction > 0 ? false : true;
     }
+
+    private float throwScale = 0f;
 
     private IEnumerator PickUpOrThrow()
     {
@@ -258,16 +268,48 @@ public class RobotController : MonoBehaviour
                 closestInteractableObject = pickUpObject;
             } else
             {
-                Vector3 throwDirectionVector = transform.right * rightThrowSpeed * (facingRight ? 1 : -1) + transform.up * upThrowSpeed;
-                interactableRB.gravityScale = 1;
-                col.isTrigger = false;
-                closestInteractableObject.transform.parent = null;
-                interactableRB.AddForce(throwDirectionVector, ForceMode2D.Impulse);
-                isHoldingInteractable = false;
-                throwing = true;
-                yield return new WaitForSeconds(throwCooldown);
-                throwing = false;
+                throwScale += Time.deltaTime;
             }
+        }
+    }
+
+    private IEnumerator ThrowObject()
+    {
+        if (isHoldingInteractable)
+        {
+            GameObject pickUpObject = closestInteractableObject;
+            Rigidbody2D interactableRB = pickUpObject.GetComponent<Rigidbody2D>();
+            Collider2D col = pickUpObject.GetComponent<Collider2D>();
+            Vector3 throwDirectionVector = transform.right * rightThrowSpeed * (facingRight ? 1 : -1) + transform.up * upThrowSpeed;
+            interactableRB.gravityScale = 1;
+            col.isTrigger = false;
+            closestInteractableObject.transform.parent = null;
+            interactableRB.AddForce(throwDirectionVector * throwScale, ForceMode2D.Impulse);
+            isHoldingInteractable = false;
+            throwing = true;
+            throwScale = 0;
+            yield return new WaitForSeconds(throwCooldown);
+            throwing = false;
+        }
+    }
+
+    private bool respawning = false;
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Dangerous" && !respawning)
+        {
+            respawning = true;
+            Respawner();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Dangerous" && !respawning)
+        {
+            respawning = true;
+            Respawner();
         }
     }
 }

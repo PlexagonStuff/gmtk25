@@ -27,15 +27,19 @@ public class RobotWheel : RobotAttachment
         rb.AddTorque(sign * scale);
 
         anim.SetFloat("Speed", Mathf.Abs(rb.linearVelocityX));
+
+
+        Debug.DrawRay(transform.position + new Vector3(0, -2f * transform.localScale.x), -transform.up, Color.cyan, 0.1f);
     }
 
     public override void UpArrow()
     {
         //This could be changed to world once we figure out the whole collision thing
         LayerMask mask = LayerMask.GetMask("GroundLayer");
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(0, -2f*transform.localScale.x), -transform.up, 0.1f, mask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(0, -2f*transform.localScale.x), -transform.up, 0.1f);
         if (hit)
         {
+            Debug.Log("jump");
             rb.linearVelocityY = Mathf.Sqrt(2 * 9.81f*rb.gravityScale * jumpHeight);
             transform.parent.GetComponent<RobotController>().Fuel -= jumpFuelCost;
 

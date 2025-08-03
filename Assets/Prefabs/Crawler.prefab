@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7815641880008972442}
   - component: {fileID: 7417608878704257179}
   - component: {fileID: 5404145542388903180}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Crawler
   m_TagString: Dangerous
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.13, y: -2.0478, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1178141608721030317}
@@ -214,7 +214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1178141608721030317}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: groundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

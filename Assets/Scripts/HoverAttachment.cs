@@ -47,8 +47,6 @@ public class HoverAttachment : RobotAttachment
             float totalForce = springForce + dampingForce;
 
             rb.AddForce(Vector2.up * totalForce, ForceMode2D.Force);
-
-            rb.AddForce(Vector2.up * hoverForce, ForceMode2D.Force);
         }
     }
 
@@ -58,7 +56,19 @@ public class HoverAttachment : RobotAttachment
 
         if (hit.collider != null)
         {
-            // Ground detected below within rayDistance
+            float currentDistance = hit.distance;
+            float heightDifference = targetJumpHoverHeight - currentDistance;
+
+            float upwardSpeed = rb.linearVelocity.y;
+
+            // Spring force: pushes back toward the target height
+            float springForce = heightDifference * jumpForce;
+
+            // Damping force: reduces bobble overshoot
+            float dampingForce = -upwardSpeed * jumpDampening;
+
+            float totalForce = springForce + dampingForce;
+
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Force);
         }
     }
