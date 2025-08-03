@@ -14,6 +14,8 @@ public class RobotWheel : RobotAttachment
     Rigidbody2D rb;
     Animator anim;
 
+    private bool jumpLock = false;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -39,14 +41,25 @@ public class RobotWheel : RobotAttachment
         RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(0, -2f*transform.localScale.x), -transform.up, 0.1f);
         if (hit)
         {
-            Debug.Log("jump");
-            rb.linearVelocityY = Mathf.Sqrt(2 * 9.81f*rb.gravityScale * jumpHeight);
-            transform.parent.GetComponent<RobotController>().Fuel -= jumpFuelCost;
+            if (!jumpLock)
+            {
+                Debug.Log("jump");
+                rb.linearVelocityY = Mathf.Sqrt(2 * 9.81f * rb.gravityScale * jumpHeight);
+                transform.parent.GetComponent<RobotController>().Fuel -= jumpFuelCost;
 
-            anim.SetBool("jump", true);
-            StartCoroutine(EndJump());
+                anim.SetBool("jump", true);
+                StartCoroutine(EndJump());
+                jumpLock = true;
+            }
+            
         }
 
+    }
+
+    public override void Idle()
+    {
+        base.Idle();
+        jumpLock = false;
     }
 
     private IEnumerator EndJump()

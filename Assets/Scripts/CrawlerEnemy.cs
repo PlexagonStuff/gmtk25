@@ -17,17 +17,23 @@ public class CrawlerEnemy : MonoBehaviour
 
         // Cast a ray downward in front of the block
         Vector2 checkDirection = movingRight ? Vector2.right : Vector2.left;
-        Vector2 origin = groundCheck.position;
-
-        RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, groundCheckDistance, groundLayer);
-
+        Vector2 original = groundCheck.position;
+        /*
+        RaycastHit2D hit = Physics2D.Raycast(original,-groundCheck.up, groundCheckDistance, groundLayer);
+        Debug.Log(original);
+        Debug.Log(hit.point);
+        Debug.DrawRay(original, hit.point, Color.red);
         if (hit.collider == null)
         {
             // No ground ahead, turn around
             Flip();
             return;
-        }
-        hit = Physics2D.Raycast(transform.position, transform.right * (movingRight ? 1 : -1), groundCheckDistance, groundLayer);
+        }*/
+        RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position + new Vector2(2, 0), transform.right, groundCheckDistance, groundLayer.value);
+        Debug.Log(hit.transform);
+        Debug.Log(hit);
+        Debug.Log(hit.point);
+        Debug.DrawRay(transform.position, hit.point, Color.blue);
         if (hit)
         {
             Debug.Log("Does this work?");
@@ -45,15 +51,25 @@ public class CrawlerEnemy : MonoBehaviour
         transform.localScale = scale;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Flip();
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+        //if (collision.gameObject.layer == 6) {
+            //Flip();
+        //}        
+    //}
 
     public IEnumerator Die()
     {
+        Debug.Log("Got hit by corpse");
         GetComponent<Animator>().SetBool("Die", true);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(3.0f);
+        Destroy(this.gameObject);
+    }
+
+
+    private void Disappear()
+    {
+        Debug.Log("Event run?");
         Destroy(this.gameObject);
     }
 }

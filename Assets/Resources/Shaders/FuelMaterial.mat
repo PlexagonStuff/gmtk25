@@ -29,7 +29,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _FuelLevel: 0.84839654
+    - _FuelLevel: 0.9223982
     - _MaxPercent: 1
     - _MinPercent: 0
     m_Colors: []

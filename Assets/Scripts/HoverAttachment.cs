@@ -7,6 +7,10 @@ public class HoverAttachment : RobotAttachment
     [SerializeField]
     private float jumpFuelCost = 0;
 
+    public float pressure = 0;
+
+    public float pressureMultiplier = 0.005f;
+
     Rigidbody2D rb;
     Animator anim;
 
@@ -18,12 +22,39 @@ public class HoverAttachment : RobotAttachment
     [SerializeField] private float targetJumpHoverHeight = 1.5f;
     public LayerMask groundLayer;
 
+    private bool flying = false;
+
+    private Vector2 initialPosition;
     private void Start()
     {
         anim = GetComponent<Animator>();
         rb = transform.parent.GetComponent<Rigidbody2D>();
     }
 
+    public override void UpArrow()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, targetHoverHeight, groundLayer);
+        if (hit && flying == false)
+        {
+            flying = true;
+            initialPosition = rb.position;
+        }
+        if (flying == true)
+        {
+            rb.AddForceY(1f, ForceMode2D.Impulse);
+            pressure += (float)pressureMultiplier;
+            pressure = Mathf.Clamp(pressure, 0, 0.5f);
+            GetComponentInParent<RobotController>().Fuel -= (float)((pressure) * 0.1);
+            transform.parent.GetComponent<RobotController>().Fuel -= 0.03f;
+        }
+    }
+
+    public override void Idle()
+    {
+        base.Idle();
+        flying = false;
+    }
+    /*
     private void FixedUpdate()
     {
         float scale = selfBalanceFactor * (Vector2.Dot(transform.up, Vector2.up) - 1) / -2;
@@ -72,4 +103,5 @@ public class HoverAttachment : RobotAttachment
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Force);
         }
     }
+    */
 }

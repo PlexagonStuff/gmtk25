@@ -31,4 +31,9 @@ public class FloatingEnemyBehavior : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         Destroy(this.gameObject);
     }
+
+    private void Disappear()
+    {
+        Destroy(this.gameObject);
+    }
 }

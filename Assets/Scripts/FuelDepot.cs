@@ -6,6 +6,7 @@ public class FuelDepot : MonoBehaviour
 
     GameObject spawnLocation;
 
+    private bool used = false;
     private void Start()
     {
         spawnLocation = GameObject.Find("StartPos");
@@ -20,6 +21,12 @@ public class FuelDepot : MonoBehaviour
     {
         if (other.gameObject == player)
         {
+            RobotController robot = player.GetComponent<RobotController>();
+            if (used == false)
+            {
+                robot.Fuel = 50;
+                used = true;
+            }
             spawnLocation.transform.position = transform.position + Vector3.up * 3;
         }
     }

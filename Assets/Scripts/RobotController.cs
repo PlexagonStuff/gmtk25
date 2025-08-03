@@ -1,6 +1,6 @@
 using NUnit.Framework.Constraints;
 using System.Collections;
-using UnityEditor.U2D.Aseprite;
+//using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;

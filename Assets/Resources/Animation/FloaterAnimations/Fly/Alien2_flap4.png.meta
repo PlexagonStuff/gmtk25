@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Alien2_flap4_0: 7723155117715055621
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

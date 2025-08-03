@@ -8,10 +8,13 @@ public class MainMenuButtons : MonoBehaviour
     private GameObject mainMenu;
     [SerializeField]
     private GameObject settingsMenu;
+    public AudioClip robotTheme;
 
     public void PlayButton()
     {
-        SceneManager.LoadScene("RoundStart");
+        FindFirstObjectByType<AudioSource>().clip = robotTheme;
+        FindFirstObjectByType<AudioSource>().Play();
+        SceneManager.LoadScene("GameScene");
     }
 
     public void SettingsButton()
